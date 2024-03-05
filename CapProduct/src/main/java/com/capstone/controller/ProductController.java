@@ -24,14 +24,12 @@ public class ProductController {
 		System.out.println("1-c");
 		service.addProduct(product);
 		return "success";
-		
+
 	}
 
 	@GetMapping("{id}")
 	public Product findProductById(@PathVariable("id") Long productid) {
 		return service.findProductById(productid);
 	}
-	
-	
 
 }
