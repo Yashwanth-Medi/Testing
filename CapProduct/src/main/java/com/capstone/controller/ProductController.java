@@ -24,6 +24,7 @@ public class ProductController {
 		System.out.println("1-c");
 		service.addProduct(product);
 		return "success";
+		
 	}
 
 	@GetMapping("{id}")
