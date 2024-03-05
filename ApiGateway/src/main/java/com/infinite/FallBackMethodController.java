@@ -6,23 +6,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FallBackMethodController {
 	
-	@GetMapping("/userServiceFallBack")
+	@GetMapping("/orderServiceFallBack")
 	public String userServiceFallBackMethod()
 	{
-		return "product service taking long time for response"+"please try again";
+		return "order service taking long time for response"+"please try again";
 		
 	}
-	@GetMapping("/departmentServiceFallBack")
+	@GetMapping("/productServiceFallBack")
 	public String departmentServiceFallBackMethod()
 	{
 		return "product service taking long time for response"+"please try again";
 		
 	}
 	
-	@GetMapping("/productServiceFallBack")
+	@GetMapping("/orderdetailsServiceFallBack")
 	public String productServiceFallBackMethod()
 	{
-		return "product service taking long time for response"+"please try again";
+		return "orderdetails service taking long time for response"+"please try again";
 		
 	}
 

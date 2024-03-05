@@ -10,14 +10,12 @@ import com.infinite.help.ResponseTemplateValueObject;
 import com.infinite.pojo.User;
 import com.infinite.repository.UserRepository;
 
-
 @Service
 public class UserService {
 
-	
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
 
@@ -26,22 +24,21 @@ public class UserService {
 	}
 
 	public ResponseTemplateValueObject getUsersWithDepartment(Long userId) {
-			ResponseTemplateValueObject vo = new ResponseTemplateValueObject();
-			System.out.println("id-2");
-			User user = userRepository.findByUserId(userId);		
-			System.out.println("id-3");
-			Department department = restTemplate.getForObject("http://10.4.33.19:8080/department/"+user.getDepartmentID(),
-			Department.class);
-			Product product = restTemplate.getForObject("http://10.4.33.19:8100/product/"+user.getProductid(), Product.class);
-			System.out.println("id-4");
-			vo.setUser(user);
-			vo.setDepartment(department);
-			vo.setProduct(product);
-			System.out.println("id-5");
-			return vo;
-			
-				}
+		ResponseTemplateValueObject vo = new ResponseTemplateValueObject();
 
-		
-		
+		User user = userRepository.findByUserId(userId);
+
+		Department department = restTemplate.getForObject("http://10.4.33.19:8080/department/" + user.getDepartmentID(),
+				Department.class);
+		Product product = restTemplate.getForObject("http://10.4.33.19:8100/product/" + user.getProductid(),
+				Product.class);
+
+		vo.setUser(user);
+		vo.setDepartment(department);
+		vo.setProduct(product);
+
+		return vo;
+
 	}
+
+}

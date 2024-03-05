@@ -7,33 +7,36 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: SERVICE2
-          uri: lb://SERVICE2
+        - id: ORDER
+          uri: lb://ORDER
           predicates:
-            - Path=/user/**
+            - Path=/orders/**
           filters:
+            - AuthnticationFilter
             - name: CircuitBreaker
               args:
-                name: SERVICE2
-                fallbackuri: forward:/userServiceFallBack
-        - id: SERVICE1
-          uri: lb://SERVICE1
+                name: ORDER
+                fallbackuri: forward:/orderServiceFallBack
+        - id: PRODUCT
+          uri: lb://PRODUCT
           predicates:
-            - Path=/department/**
+            - Path=/product/**
           filters:
+            - AuthnticationFilter
             - name: CircuitBreaker
               args:
-                name: SERVICE1
-                fallbackuri: forward:/departmentServiceFallBack
-        - id: PRODUCTSERVICE
-          uri: lb://PRODUCTSERVICE
+                name: PRODUCT
+                fallbackuri: forward:/productServiceFallBack
+        - id: ORDERDEATILS
+          uri: lb://ORDERDEATILS
           predicates:
-          -  Path=/product/**
+          -  Path=/orderdetails/**
           filters:
+          - AuthnticationFilter
           - name: CircuitBreaker
             args:
-              name: PRODUCTSERVICE
-              fallbackuri: forward:/productServiceFallBack
+              name: ORDERDEATILS
+              fallbackuri: forward:/orderdetailsServiceFallBack
               
             
 
